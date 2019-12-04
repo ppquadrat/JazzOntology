@@ -1,0 +1,491 @@
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix tl: <http://purl.org/NET/c4dm/timeline.owl#> .
+@prefix dtl: <http://www.DTL.org/schema/properties/> .
+@prefix olo: <http://purl.org/ontology/olo/core#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix event: <http://purl.org/NET/c4dm/event.owl#> .
+@base <http://www.w3.org/2002/07/owl#> .
+
+[ rdf:type owl:Ontology
+ ] .
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://purl.org/NET/c4dm/event.owl#sub_event
+event:sub_event rdf:type owl:ObjectProperty ;
+                rdfs:domain event:Event ;
+                rdfs:range event:Event .
+
+
+###  http://purl.org/NET/c4dm/event.owl#time
+event:time rdf:type owl:ObjectProperty .
+
+
+###  http://purl.org/NET/c4dm/timeline.owl#timelime
+tl:timelime rdf:type owl:ObjectProperty .
+
+
+###  http://purl.org/ontology/mo/performed_in
+mo:performed_in rdf:type owl:ObjectProperty ,
+                         owl:AsymmetricProperty ;
+                rdfs:domain mo:Tune ,
+                            dtl:Medley ;
+                rdfs:range mo:Performance .
+
+
+###  http://purl.org/ontology/mo/performer
+mo:performer rdf:type owl:ObjectProperty ,
+                      owl:AsymmetricProperty ;
+             rdfs:domain mo:Performance ;
+             rdfs:range dtl:Performer .
+
+
+###  http://purl.org/ontology/mo/published_as
+mo:published_as rdf:type owl:ObjectProperty ,
+                         owl:AsymmetricProperty ;
+                rdfs:domain mo:Album ,
+                            mo:Signal ;
+                rdfs:range mo:Release ,
+                           mo:Track .
+
+
+###  http://purl.org/ontology/mo/record
+mo:record rdf:type owl:ObjectProperty ,
+                   owl:AsymmetricProperty ;
+          rdfs:domain mo:Release ;
+          rdfs:range mo:Medium .
+
+
+###  http://purl.org/ontology/mo/release
+mo:release rdf:type owl:ObjectProperty ,
+                    owl:AsymmetricProperty ;
+           rdfs:domain mo:ReleaseEvent ;
+           rdfs:range mo:Release .
+
+
+###  http://purl.org/ontology/mo/track
+mo:track rdf:type owl:ObjectProperty ,
+                  owl:AsymmetricProperty ;
+         rdfs:domain mo:Medium ;
+         rdfs:range mo:Track .
+
+
+###  http://purl.org/ontology/olo/core#item
+olo:item rdf:type owl:ObjectProperty ,
+                  owl:AsymmetricProperty ;
+         rdfs:range mo:Tune .
+
+
+###  http://purl.org/ontology/olo/core#slot
+olo:slot rdf:type owl:ObjectProperty ,
+                  owl:AsymmetricProperty ;
+         rdfs:domain dtl:Medley .
+
+
+###  http://www.DTL.org/schema/properties/arranged_by
+dtl:arranged_by rdf:type owl:ObjectProperty ,
+                         owl:AsymmetricProperty ;
+                rdfs:domain mo:Tune ,
+                            dtl:Medley ;
+                rdfs:range mo:Musician .
+
+
+###  http://www.DTL.org/schema/properties/captures
+dtl:captures rdf:type owl:ObjectProperty ,
+                      owl:AsymmetricProperty ;
+             rdfs:domain mo:Signal ;
+             rdfs:range mo:Performance .
+
+
+###  http://www.DTL.org/schema/properties/changes_of
+dtl:changes_of rdf:type owl:ObjectProperty ,
+                        owl:AsymmetricProperty ;
+               rdfs:domain mo:Performance ;
+               rdfs:range mo:Tune .
+
+
+###  http://www.DTL.org/schema/properties/citation
+dtl:citation rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdf:type owl:AsymmetricProperty ;
+             rdfs:domain mo:Performance ;
+             rdfs:range mo:Tune .
+
+
+###  http://www.DTL.org/schema/properties/composed_by
+dtl:composed_by rdf:type owl:ObjectProperty ,
+                         owl:AsymmetricProperty ;
+                rdfs:domain mo:Tune ,
+                            dtl:Medley ;
+                rdfs:range mo:Musician .
+
+
+###  http://www.DTL.org/schema/properties/has_intro
+dtl:has_intro rdf:type owl:ObjectProperty ,
+                       owl:AsymmetricProperty ;
+              rdfs:domain mo:Performance ;
+              rdfs:range mo:Tune .
+
+
+###  http://www.DTL.org/schema/properties/instrument
+dtl:instrument rdf:type owl:ObjectProperty ,
+                        owl:AsymmetricProperty ;
+               rdfs:domain dtl:Performer ;
+               rdfs:range dtl:Instrument .
+
+
+###  http://www.DTL.org/schema/properties/medley
+dtl:medley rdf:type owl:ObjectProperty ,
+                    owl:AsymmetricProperty ;
+           rdfs:domain dtl:Medley ;
+           rdfs:range mo:Performance .
+
+
+###  http://www.DTL.org/schema/properties/musician
+dtl:musician rdf:type owl:ObjectProperty ,
+                      owl:AsymmetricProperty ;
+             rdfs:domain dtl:Performer ;
+             rdfs:range mo:Musician .
+
+
+###  http://www.DTL.org/schema/properties/performance_of
+dtl:performance_of rdf:type owl:ObjectProperty ,
+                            owl:AsymmetricProperty ;
+                   rdfs:domain mo:Performance ;
+                   rdfs:range mo:Tune .
+
+
+###  http://www.DTL.org/schema/properties/published
+dtl:published rdf:type owl:ObjectProperty ,
+                       owl:AsymmetricProperty ;
+              rdfs:domain mo:Label ;
+              rdfs:range mo:ReleaseEvent .
+
+
+###  http://www.DTL.org/schema/properties/theme_of
+dtl:theme_of rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdf:type owl:AsymmetricProperty ;
+             rdfs:domain mo:Performance ;
+             rdfs:range mo:Tune .
+
+
+###  http://www.DTL.org/schema/properties/variations_on
+dtl:variations_on rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf owl:topObjectProperty ;
+                  rdf:type owl:AsymmetricProperty ;
+                  rdfs:domain mo:Performance ;
+                  rdfs:range mo:Tune .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://purl.org/NET/c4dm/event.owl#place
+event:place rdf:type owl:DatatypeProperty ;
+            rdfs:domain event:Event ;
+            rdfs:range rdfs:Literal .
+
+
+###  http://purl.org/NET/c4dm/timeline.owl#at
+tl:at rdf:type owl:DatatypeProperty ,
+               owl:FunctionalProperty ;
+      rdfs:domain tl:Instant ,
+                  tl:Interval ;
+      rdfs:range xsd:date .
+
+
+###  http://purl.org/NET/c4dm/timeline.owl#duration
+tl:duration rdf:type owl:DatatypeProperty ,
+                     owl:FunctionalProperty ;
+            rdfs:domain tl:Interval .
+
+
+###  http://purl.org/dc/elements/1.1/title
+dc:title rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.org/ontology/mo/record_count
+mo:record_count rdf:type owl:DatatypeProperty ,
+                         owl:FunctionalProperty ;
+                rdfs:domain mo:Release ;
+                rdfs:range xsd:integer .
+
+
+###  http://purl.org/ontology/mo/record_number
+mo:record_number rdf:type owl:DatatypeProperty ,
+                          owl:FunctionalProperty ;
+                 rdfs:domain mo:Medium ;
+                 rdfs:range xsd:integer .
+
+
+###  http://purl.org/ontology/mo/track_count
+mo:track_count rdf:type owl:DatatypeProperty ,
+                        owl:FunctionalProperty ;
+               rdfs:domain mo:Medium ;
+               rdfs:range xsd:integer .
+
+
+###  http://purl.org/ontology/mo/track_number
+mo:track_number rdf:type owl:DatatypeProperty ,
+                         owl:FunctionalProperty ;
+                rdfs:domain mo:Track ;
+                rdfs:range xsd:integer .
+
+
+###  http://purl.org/ontology/olo/core#index
+olo:index rdf:type owl:DatatypeProperty ,
+                   owl:FunctionalProperty ;
+          rdfs:range xsd:integer .
+
+
+###  http://purl.org/ontology/olo/core#length
+olo:length rdf:type owl:DatatypeProperty ,
+                    owl:FunctionalProperty ;
+           rdfs:domain dtl:Medley ;
+           rdfs:range xsd:integer .
+
+
+###  http://www.DTL.org/schema/properties/approximation_qualifier
+dtl:approximation_qualifier rdf:type owl:DatatypeProperty ,
+                                     owl:FunctionalProperty ;
+                            rdfs:domain dtl:QualifiedDateInstant ,
+                                        dtl:QualifiedDateInterval ;
+                            rdfs:range rdfs:Literal .
+
+
+###  http://www.DTL.org/schema/properties/freetext_timespan
+dtl:freetext_timespan rdf:type owl:DatatypeProperty ;
+                      rdfs:domain dtl:QualifiedDateInstant ,
+                                  dtl:QualifiedDateInterval ;
+                      rdfs:range rdfs:Literal .
+
+
+###  http://www.DTL.org/schema/properties/instrument_confidence
+dtl:instrument_confidence rdf:type owl:DatatypeProperty ,
+                                   owl:FunctionalProperty ;
+                          rdfs:domain dtl:PerformerConfidence ;
+                          rdfs:range xsd:boolean .
+
+
+###  http://www.DTL.org/schema/properties/is_approximate
+dtl:is_approximate rdf:type owl:DatatypeProperty ,
+                            owl:FunctionalProperty ;
+                   rdfs:domain dtl:QualifiedDateInstant ,
+                               dtl:QualifiedDateInterval ;
+                   rdfs:range xsd:boolean .
+
+
+###  http://www.DTL.org/schema/properties/is_compilation
+dtl:is_compilation rdf:type owl:DatatypeProperty ,
+                            owl:FunctionalProperty ;
+                   rdfs:domain mo:Album ;
+                   rdfs:range xsd:boolean .
+
+
+###  http://www.DTL.org/schema/properties/is_live
+dtl:is_live rdf:type owl:DatatypeProperty ,
+                     owl:FunctionalProperty ;
+            rdfs:domain mo:Album ,
+                        dtl:Session ;
+            rdfs:range xsd:boolean .
+
+
+###  http://www.DTL.org/schema/properties/is_remastered
+dtl:is_remastered rdf:type owl:DatatypeProperty ,
+                           owl:FunctionalProperty ;
+                  rdfs:domain mo:Release ;
+                  rdfs:range xsd:boolean .
+
+
+###  http://www.DTL.org/schema/properties/is_remix
+dtl:is_remix rdf:type owl:DatatypeProperty ,
+                      owl:FunctionalProperty ;
+             rdfs:domain mo:Album ;
+             rdfs:range xsd:boolean .
+
+
+###  http://www.DTL.org/schema/properties/medley_title
+dtl:medley_title rdf:type owl:DatatypeProperty ,
+                          owl:FunctionalProperty ;
+                 rdfs:domain mo:Performance ;
+                 rdfs:range rdfs:Literal .
+
+
+###  http://www.DTL.org/schema/properties/musician_confidence
+dtl:musician_confidence rdf:type owl:DatatypeProperty ,
+                                 owl:FunctionalProperty ;
+                        rdfs:domain dtl:PerformerConfidence ;
+                        rdfs:range xsd:boolean .
+
+
+###  http://www.DTL.org/schema/properties/part_number
+dtl:part_number rdf:type owl:DatatypeProperty ,
+                         owl:FunctionalProperty ;
+                rdfs:domain mo:Performance ;
+                rdfs:range xsd:integer .
+
+
+###  http://www.DTL.org/schema/properties/performer_confidence
+dtl:performer_confidence rdf:type owl:DatatypeProperty .
+
+
+###  http://www.DTL.org/schema/properties/take_number
+dtl:take_number rdf:type owl:DatatypeProperty ,
+                         owl:FunctionalProperty ;
+                rdfs:domain mo:Performance ;
+                rdfs:range xsd:integer .
+
+
+###  http://www.DTL.org/schema/properties/venue
+dtl:venue rdf:type owl:DatatypeProperty ,
+                   owl:FunctionalProperty ;
+          rdfs:domain dtl:Session ;
+          rdfs:range rdfs:Literal .
+
+
+###  http://xmlns.com/foaf/0.1/name
+foaf:name rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://purl.org/NET/c4dm/event.owl#Event
+event:Event rdf:type owl:Class .
+
+
+###  http://purl.org/NET/c4dm/timeline.owl#Instant
+tl:Instant rdf:type owl:Class .
+
+
+###  http://purl.org/NET/c4dm/timeline.owl#Interval
+tl:Interval rdf:type owl:Class .
+
+
+###  http://purl.org/ontology/mo/Album
+mo:Album rdf:type owl:Class ;
+         rdfs:subClassOf mo:SignalGroup .
+
+
+###  http://purl.org/ontology/mo/Band
+mo:Band rdf:type owl:Class ;
+        rdfs:subClassOf mo:MusicGroup .
+
+
+###  http://purl.org/ontology/mo/Label
+mo:Label rdf:type owl:Class .
+
+
+###  http://purl.org/ontology/mo/Medium
+mo:Medium rdf:type owl:Class .
+
+
+###  http://purl.org/ontology/mo/MusicArtist
+mo:MusicArtist rdf:type owl:Class .
+
+
+###  http://purl.org/ontology/mo/MusicGroup
+mo:MusicGroup rdf:type owl:Class .
+
+
+###  http://purl.org/ontology/mo/MusicalWork
+mo:MusicalWork rdf:type owl:Class .
+
+
+###  http://purl.org/ontology/mo/Musician
+mo:Musician rdf:type owl:Class ;
+            rdfs:subClassOf mo:MusicArtist .
+
+
+###  http://purl.org/ontology/mo/Performance
+mo:Performance rdf:type owl:Class ;
+               rdfs:subClassOf event:Event .
+
+
+###  http://purl.org/ontology/mo/Record
+mo:Record rdf:type owl:Class .
+
+
+###  http://purl.org/ontology/mo/Release
+mo:Release rdf:type owl:Class .
+
+
+###  http://purl.org/ontology/mo/ReleaseEvent
+mo:ReleaseEvent rdf:type owl:Class ;
+                rdfs:subClassOf event:Event .
+
+
+###  http://purl.org/ontology/mo/Signal
+mo:Signal rdf:type owl:Class .
+
+
+###  http://purl.org/ontology/mo/SignalGroup
+mo:SignalGroup rdf:type owl:Class .
+
+
+###  http://purl.org/ontology/mo/Track
+mo:Track rdf:type owl:Class .
+
+
+###  http://purl.org/ontology/mo/Tune
+mo:Tune rdf:type owl:Class ;
+        rdfs:subClassOf mo:MusicalWork .
+
+
+###  http://purl.org/ontology/olo/core#OrderedList
+olo:OrderedList rdf:type owl:Class .
+
+
+###  http://www.DTL.org/schema/properties/Instrument
+dtl:Instrument rdf:type owl:Class .
+
+
+###  http://www.DTL.org/schema/properties/Medley
+dtl:Medley rdf:type owl:Class ;
+           rdfs:subClassOf mo:MusicalWork ,
+                           olo:OrderedList .
+
+
+###  http://www.DTL.org/schema/properties/Performer
+dtl:Performer rdf:type owl:Class .
+
+
+###  http://www.DTL.org/schema/properties/PerformerConfidence
+dtl:PerformerConfidence rdf:type owl:Class .
+
+
+###  http://www.DTL.org/schema/properties/QualifiedDateInstant
+dtl:QualifiedDateInstant rdf:type owl:Class ;
+                         rdfs:subClassOf tl:Instant .
+
+
+###  http://www.DTL.org/schema/properties/QualifiedDateInterval
+dtl:QualifiedDateInterval rdf:type owl:Class ;
+                          rdfs:subClassOf tl:Interval .
+
+
+###  http://www.DTL.org/schema/properties/Session
+dtl:Session rdf:type owl:Class ;
+            rdfs:subClassOf event:Event .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
