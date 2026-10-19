@@ -37,8 +37,8 @@ event:sub_event rdf:type owl:ObjectProperty ;
 event:time rdf:type owl:ObjectProperty .
 
 
-###  http://purl.org/NET/c4dm/timeline.owl#timelime
-tl:timelime rdf:type owl:ObjectProperty .
+###  http://purl.org/NET/c4dm/timeline.owl#timeline
+tl:timeline rdf:type owl:ObjectProperty .
 
 
 ###  http://purl.org/ontology/mo/performed_in
